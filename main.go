@@ -6,6 +6,8 @@ import (
 	"lem-in/rooms"
 )
 
+
+
 func main(){
 	myGraph := graphs.Graph{}
 	 myGraph.NewGraph([]string{"s","0","1","2","3","4","5","6","7","8","t"})

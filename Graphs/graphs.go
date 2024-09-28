@@ -38,6 +38,27 @@ func (dfs *Graph) ShowAdjList(){
 	}
 }
 
+var MyStack = stack.NewStack()
+func (dfs *Graph) DFSExplore(root *rooms.Room) {
+	root.SetVisited(true)
+	MyStack.Push(root.GetName())
+	if root.GetName() == "t" {
+		root.SetVisited(false)
+		MyStack.Show()
+		MyStack.Pop()
+		return
+	}
+	for _,v := range dfs.AdjList[root.GetName()] {
+		if !v.IsVisited() {
+			dfs.DFSExplore(v)
+			v.SetVisited(false)
+		}
+	}
+	MyStack.Pop()
+}
+
+
+/*
 func (dfs *Graph) DFSExplore(root *rooms.Room) {
 	myStack := stack.NewStack()
 	myStack.Push(root.GetName())
@@ -53,30 +74,22 @@ func (dfs *Graph) DFSExplore(root *rooms.Room) {
 				break
 			}
 				//fmt.Printf("%v childs : %v \n",n,*room)
-				if  !room.IsVisited() {
-					myStack.Push(room.GetName())
-					room.SetVisited(true)
-					isDone = false
-					break
-				}
-			}
-			if isDone {
-				node := myStack.Pop().GetValue()
-				//dfs.MakeEveryChildUnVisited(node)
-				fmt.Printf("visited : %v \n",node)
+			if  !room.IsVisited() {
+				myStack.Push(room.GetName())
+				room.SetVisited(true)
+				isDone = false
+				break
 			}
 		}
-}
-
-/*func (dfs *Graph) MakeEveryChildUnVisited(root string) {
-	childsRooms := dfs.AdjList[root]
-	for _,v := range childsRooms {
-		for _, vchild := range dfs.AdjList[v.GetName()] {
-			if 
+		if isDone {
+			node := myStack.Pop().GetValue()
+			//dfs.MakeEveryChildUnVisited(node)
+			fmt.Printf("visited : %v \n",node)
 		}
 	}
 }
 */
+
 /*
 func (dfs *Graph) BFSExplore(root int){
 	myQueu := queu.NewQueu(dfs.size)

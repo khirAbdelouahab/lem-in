@@ -51,7 +51,7 @@ func ExtractEdgeList(data []string) [][]string {
 
 func EdgeListToAdjList(List [][]string) map[string][]string {
 	var hold [][]string
-	m := make(map[string][]string)
+	Map := make(map[string][]string)
 	for _, Node := range List {
 		for _, v := range Node {
 
@@ -67,12 +67,12 @@ func EdgeListToAdjList(List [][]string) map[string][]string {
 
 	for _, v := range hold {
 
-		m[v[0]] = append(m[v[0]], v[1])
+		Map[v[0]] = append(Map[v[0]], v[1])
 
-		m[v[1]] = append(m[v[1]], v[0])
+		Map[v[1]] = append(Map[v[1]], v[0])
 
 	}
 	//fmt.Println(m)
 
-	return m
+	return Map
 }

@@ -42,7 +42,7 @@ var MyStack = stack.NewStack()
 func (dfs *Graph) DFSExplore(root *rooms.Room) {
 	root.SetVisited(true)
 	MyStack.Push(root.GetName())
-	if root.GetName() == "t" {
+	if root.GetName() == "end" {
 		root.SetVisited(false)
 		MyStack.Show()
 		MyStack.Pop()

@@ -39,7 +39,7 @@ func (dfs *Graph) ShowAdjList(){
 }
 
 var MyStack = stack.NewStack()
-func (dfs *Graph) DFSExplore(root *rooms.Room) {
+func (dfs *Graph) DFSExplore(root *rooms.Room,end string) {
 	root.SetVisited(true)
 	MyStack.Push(root.GetName())
 	if root.GetName() == "end" {
@@ -50,7 +50,7 @@ func (dfs *Graph) DFSExplore(root *rooms.Room) {
 	}
 	for _,v := range dfs.AdjList[root.GetName()] {
 		if !v.IsVisited() {
-			dfs.DFSExplore(v)
+			dfs.DFSExplore(v,end)
 			v.SetVisited(false)
 		}
 	}

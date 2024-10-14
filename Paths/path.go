@@ -90,7 +90,7 @@ func arePathsEqual(path1, path2 []string) bool {
 	return false
 }
 
-func groupUniquePaths(paths [][]string) [][][]string {
+func GroupUniquePaths(paths [][]string) [][][]string {
 	paths = sortPaths(paths)
 	var groups [][][]string
 	used := make(map[int]bool)
@@ -121,7 +121,7 @@ func groupUniquePaths(paths [][]string) [][][]string {
 }
 
 func PrintData(paths [][]string) {
-	groupedPaths := groupUniquePaths(paths)
+	groupedPaths := GroupUniquePaths(paths)
 
 	for i, group := range groupedPaths {
 		fmt.Printf("Group %d:\n", i+1)

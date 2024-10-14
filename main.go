@@ -95,5 +95,9 @@ func main() {
 	CreateRooms(&myGraph, arr)
 	LinkRoomsTogether(&myGraph, linksRooms)
 	myGraph.DFSExplore(ArrayRooms[0],"t")
-	paths.PrintData(myGraph.Paths)
+	//paths.PrintData(myGraph.Paths)
+	groupedPaths := paths.GroupUniquePaths(myGraph.Paths)[0]
+	paths.GetAllPaths(groupedPaths)
+	paths.MakeAntsInPlaces(10)
+	paths.ShowPathList()
 }
